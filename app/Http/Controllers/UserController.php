@@ -28,7 +28,6 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-
         $this->userService->create($request->only('name', 'email'));
 
         return redirect()->back();
