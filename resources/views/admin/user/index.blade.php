@@ -27,8 +27,8 @@
                             <td class="text-center"><img src="/template/images/avt.png" alt="IMG-LOGO" style="width: 50px;">
                             </td>
 
-                            <td>{{ $user[0]['name'] }}</td>
-                            <td>{{ $user[0]['email'] }}</td>
+                            <td>{{ $user['name'] }}</td>
+                            <td>{{ $user['email'] }}</td>
                             <td>
                                 <button type="button" class="btn btn-primary btn-sm">Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm">Delete</button>

@@ -8,6 +8,6 @@ class UserService
 {
     public function create($request)
     {
-        Session::push('users', [ $request ]);
+        Session::push('users', $request->only('name', 'email', 'phone', 'address'));
     }
 }
