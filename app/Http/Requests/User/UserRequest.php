@@ -33,18 +33,5 @@ class UserRequest extends FormRequest
             'youtube' => ['url']
         ];
     }
-    
-    public function messages()
-    {
-        return [
-            'name.required' => ':attribute bắt buộc phải nhập'
-        ];
-    }
-
-    public function attributes() {
-        return [
-            'name' => 'Tên người dùng'
-        ];
-    }
 
 }

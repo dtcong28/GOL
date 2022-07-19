@@ -15,6 +15,11 @@
                     Vui lòng kiểm tra lại dữ liệu
                 </div>
             @endif
+            @if (session()->has('message'))
+                <div class="alert alert-success text-center">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">

@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         $this->userService->create($request->only('name', 'email', 'phone', 'address'));
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Thêm mới thành công');
     }
 
     public function email()
