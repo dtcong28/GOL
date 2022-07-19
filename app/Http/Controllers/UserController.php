@@ -31,7 +31,7 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        $this->userService->create($request);
+        $this->userService->create($request->only('name', 'email', 'phone', 'address'));
 
         return redirect()->back();
     }
@@ -43,14 +43,11 @@ class UserController extends Controller
 
     public function sendMailUserProfile(Request $request)
     {
-        if ($request->email == 'all_user') {
-            $user = collect(Session::get('users'));
-        }else{
-            $user = collect(Session::get('users'))->where('email','=', $request->email);
-        }
-        foreach ($user as $value)
+        $users = $request->email == 'all_user' ? collect(Session::get('users')) : collect(Session::get('users'))->where('email','=', $request->email);
+
+        foreach ($users as $user)
         {
-            $this->mailService->sendUserProfile($value);
+            $this->mailService->sendUserProfile($user);
         }
         return redirect()->back()->with('message', 'Gửi thành công');
     }
