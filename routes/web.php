@@ -27,6 +27,10 @@ Route::prefix('admin')-> group(function (){
     Route::get('user/create',[UserController::class,'create']);
     Route::post('user/create',[UserController::class,'store']);
 
+    #SendEmail
+    Route::get('FormSendEmail',[UserController::class,'email']);
+    Route::post('FormSendEmail',[UserController::class,'sendMailUserProfile']);
+
     #Role
     Route::get('role',[RoleController::class,'index']);
 
