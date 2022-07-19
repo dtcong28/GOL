@@ -5,7 +5,10 @@
         <div>
             <div class="row">
                 <h6 class="col-4">User List</h6>
-                <div class="col-6"></div>
+                <div class="col-4"></div>
+                <button class="btn btn-primary col-1" style="width: 100px; margin-right:10px"><a href="/admin/FormSendEmail"
+                                                                              style="color: white">Send mail</a>
+                </button>
                 <button class="btn btn-primary col-1" style="width: 120px"><a href="/admin/user/create"
                                                                               style="color: white">+ Add new</a>
                 </button>
