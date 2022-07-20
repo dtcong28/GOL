@@ -13,20 +13,31 @@
                 {{ session()->get('message') }}
             </div>
         @endif
-        <form method="post">
-            <div class="form-group pt-3">
-                <select name="email" class="form-select" required>
-                    <option selected value="all_user">All user</option>
-                    @foreach($users as $user)
-                    <option value="{{$user['email']}}">{{$user['name']}}</option>
-                    @endforeach
-                </select>
+        @if(!empty($users))
+            <form action="{{route('send')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group pt-3">
+                    <select name="email" class="form-select" required>
+                        <option selected value="all_user">All user</option>
+                        @foreach($users as $user)
+                            <option value="{{$user['email']}}">{{$user['name']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3 pt-3">
+                    <label class="form-label">Attach file</label>
+                    <input class="form-control" type="file" id="attachment" name="attachment">
+                </div>
+                <div class="pt-4 text-center pb-5">
+                    <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">
+                        Send
+                    </button>
+                </div>
+            </form>
+        @else
+            <div class="alert alert-danger text-center">
+                Không có dữ liệu người dùng
             </div>
-            <div class="pt-4 text-center pb-5">
-                <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">Send
-                </button>
-            </div>
-            @csrf
-        </form>
+        @endif
     </div>
 @endsection

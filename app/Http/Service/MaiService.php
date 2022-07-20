@@ -7,8 +7,8 @@ use App\Mail\InformUserProfile;
 
 class MaiService
 {
-    public function sendUserProfile($user)
+    public function sendUserProfile($user, $filename)
     {
-        Mail::to($user['email'])->send(new InformUserProfile($user));
+        Mail::to($user['email'])->send(new InformUserProfile($user, $filename));
     }
 }

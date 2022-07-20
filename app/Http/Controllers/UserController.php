@@ -8,6 +8,10 @@ use App\Http\Service\UserService;
 use Illuminate\Support\Facades\Session;
 use App\Http\Service\MaiService;
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\File;
+
 class UserController extends Controller
 {
     protected $userService;
@@ -45,10 +49,29 @@ class UserController extends Controller
     {
         $users = $request->email == 'all_user' ? collect(Session::get('users')) : collect(Session::get('users'))->where('email','=', $request->email);
 
-        foreach ($users as $user)
-        {
-            $this->mailService->sendUserProfile($user);
+        $path = public_path('uploads');
+        $attachment = $request->file('attachment');
+
+        if(!empty($attachment)) {
+            $name = time().'.'.$attachment->getClientOriginalExtension();
+
+            // create folder
+            if(!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+            $attachment->move($path, $name);
+
+            $filename = $path.'/'.$name;
+
+            foreach ($users as $user) {
+                $this->mailService->sendUserProfile($user, $filename);
+            }
+        }else {
+            foreach ($users as $user) {
+                $this->mailService->sendUserProfile($user, $filename= '/');
+            }
         }
+
         return redirect()->back()->with('message', 'Gửi thành công');
     }
 }
