@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\User\UserRequest;
-use App\Http\Service\UserService;
-use Illuminate\Support\Facades\Session;
 use App\Http\Service\MaiService;
-
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Notifications\Notification;
+use App\Http\Service\UserService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
     protected $userService;
+
     protected $mailService;
 
     public function __construct(UserService $userService, MaiService $mailService)
@@ -47,16 +45,16 @@ class UserController extends Controller
 
     public function sendMailUserProfile(Request $request)
     {
-        $users = $request->email == 'all_user' ? collect(Session::get('users')) : collect(Session::get('users'))->where('email','=', $request->email);
+        $users = $request->email == 'all_user' ? collect(Session::get('users')) : collect(Session::get('users'))->where('email', '=', $request->email);
 
         $path = public_path('uploads');
         $attachment = $request->file('attachment');
 
-        if(!empty($attachment)) {
+        if (! empty($attachment)) {
             $name = time().'.'.$attachment->getClientOriginalExtension();
 
             // create folder
-            if(!File::exists($path)) {
+            if (! File::exists($path)) {
                 File::makeDirectory($path, $mode = 0777, true, true);
             }
             $attachment->move($path, $name);
@@ -66,9 +64,9 @@ class UserController extends Controller
             foreach ($users as $user) {
                 $this->mailService->sendUserProfile($user, $filename);
             }
-        }else {
+        } else {
             foreach ($users as $user) {
-                $this->mailService->sendUserProfile($user, $filename= '/');
+                $this->mailService->sendUserProfile($user, $filename = '/');
             }
         }
 
