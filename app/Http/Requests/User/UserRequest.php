@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\User;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\ValidateEmailUnique;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
@@ -25,13 +25,12 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required','min:2', 'regex:/^[a-zA-Z]+$/u'],
-            'email' => ['required','email','not_regex:/^[root]/',new ValidateEmailUnique()],
-            'password' => ['required','string','min:8','regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/','required_with:password_confirm','same:password_confirm'],
-            'password_confirm' =>['required'],
+            'name' => ['required', 'min:2', 'regex:/^[a-zA-Z]+$/u'],
+            'email' => ['required', 'email', 'not_regex:/^[root]/', new ValidateEmailUnique()],
+            'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', 'required_with:password_confirm', 'same:password_confirm'],
+            'password_confirm' => ['required'],
             'facebook' => ['url'],
-            'youtube' => ['url']
+            'youtube' => ['url'],
         ];
     }
-
 }

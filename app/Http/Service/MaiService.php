@@ -1,9 +1,9 @@
 <?php
 
-
 namespace App\Http\Service;
-use Illuminate\Support\Facades\Mail;
+
 use App\Mail\InformUserProfile;
+use Illuminate\Support\Facades\Mail;
 
 class MaiService
 {
