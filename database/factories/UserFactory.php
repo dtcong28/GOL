@@ -20,9 +20,20 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'username' => fake()->username(),
+            'password' => fake()->password(),
+            'address' => fake()->sentence(),
+            'type' => fake()->randomDigit(),
+            'parent_id' => fake()->randomNumber(4, false),
+            'verified_at' => now(),
+            'closed' => false,
+            'code' => fake()->unique()->randomNumber(5, false),
+            'social_type' => fake()->randomDigit(),
+            'social_id' => fake()->unique(),
+            'social_name' => fake()->name(),
+            'social_nickname' => fake()->word(),
+            'social_avatar' => fake()->word(),
+            'description' => fake()->sentence(),
         ];
     }
 
