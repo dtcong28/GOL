@@ -10,7 +10,7 @@ class School extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     protected $guarded = [];
 
 

@@ -13,6 +13,6 @@ class Tag extends Model
 
     public function users()
     {
-        return $this->morphedByMany(User::class,'taggable');
+        return $this->morphedByMany(User::class, 'taggable');
     }
 }
