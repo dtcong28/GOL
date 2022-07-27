@@ -18,6 +18,7 @@ return new class () extends Migration {
             $table->string('attachable_type', 255)->nullable();
             $table->unsignedBigInteger('attachable_id');
             $table->string('file_path', 255);
+            $table->string('file_name', 255);
             $table->string('extension', 255);
             $table->string('mime_type', 255);
             $table->unsignedInteger('size')->default(0);

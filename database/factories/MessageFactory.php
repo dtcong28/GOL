@@ -23,8 +23,8 @@ class MessageFactory extends Factory
             'receiver_type' => 'user',
             'content' => fake()->sentence(),
             'content_type' => 'text',
-            'association_id' => null,
-            'association_type' => null,
+            'association_id' => fake()->numerify('###'),
+            'association_type' => fake()->word(),
         ];
     }
 }
