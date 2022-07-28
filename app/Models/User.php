@@ -3,11 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory;
+    use SoftDeletes;
+    use AuthenticableTrait;
+    use Notifiable;
 
     const TYPES = [
         'admin' => 1,
@@ -51,5 +58,27 @@ class User extends Model
     public function attachments()
     {
         return $this->hasMany(Attachment::class);
+    }
+
+    /**
+     * 
+     * Xác định xem người dùng đã xác minh địa chỉ email của họ chưa
+     * bằng việc kiểm tra trường email_verified_at có null hay không
+     * 
+     */
+    public function hasVerifiedEmail()
+    {
+        return ! is_null($this->email_verified_at);
+    }
+
+    /**
+     * Đánh dấu email của người dùng đã được xác minh
+     * bằng việc cập nhật timestamp ở trường email_verified_at
+     */
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'verified_at' => $this->freshTimestamp(),
+        ])->save();
     }
 }

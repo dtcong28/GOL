@@ -33,6 +33,7 @@ return new class () extends Migration {
             $table->string('social_avatar')->nullable();
             $table->text('description')->nullable();
             $table->foreign('school_id')->references('id')->on('schools')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('remember_token')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
