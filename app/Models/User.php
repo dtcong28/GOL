@@ -9,12 +9,19 @@ class User extends Model
 {
     use HasFactory;
 
+    const TYPES = [
+        'admin' => 1,
+        'student' => 2,
+    ];
+
     protected $fillable = [
         'name',
         'email',
         'username',
         'password',
     ];
+
+    protected $guarded = [];
 
     public function setPasswordAttribute($value)
     {

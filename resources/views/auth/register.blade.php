@@ -7,6 +7,12 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
+                @if (isset($message))
+                    <div class="alert alert-danger text-center ">
+                        {{$message}}
+                    </div>
+                @endif
+                
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
