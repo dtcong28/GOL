@@ -14,4 +14,10 @@
             <li><a href="{{ url('admin/category') }}">Category management</a></li>
         </ul>
     </li>
+    <li>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            <button>Logout</button>
+            @csrf
+        </form>
+    </li>
 </ul>

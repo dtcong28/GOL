@@ -8,7 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-// use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Auth\RegisterRequest;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -26,7 +28,7 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = 'email/verify';
+    protected $redirectTo = 'login';
 
     public function __construct()
     {
@@ -45,13 +47,27 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        //dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
+            'type' => '2',
         ]);
     }
 
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+        event(new Registered($user));
+        //$this->guard()->login($user);
+
+        // $this->activationService->sendActivationMail($user);
+
+        return redirect('/login')->with('status', 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.');
+        // return $this->registered($request, $user)
+        //                 ?: redirect($this->redirectPath());
+    }
 
 }

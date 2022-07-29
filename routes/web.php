@@ -5,6 +5,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -20,9 +21,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::prefix('admin')->group(function () {
+Auth::routes(['verify' => true]);
+Route::get('/', function () {
+    return redirect('/home');
+});
+
+//Student
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//Admin 
+Route::group(['prefix' => 'admin',  'middleware' => 'user-access'],function () {
     //User
-    Route::get('user', [UserController::class, 'index']);
+    Route::get('user', [UserController::class, 'index'])->name('admin');
     Route::get('user/create', [UserController::class, 'create']);
     Route::post('user/create', [UserController::class, 'store']);
 
@@ -41,12 +51,8 @@ Route::prefix('admin')->group(function () {
 
     //Category
     Route::get('category', [CategoryController::class, 'index']);
+
 });
 
-Auth::routes(['verify' => true]);
-Route::get('/', function () {
-    return redirect('/home');
-});
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
