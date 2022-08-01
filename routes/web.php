@@ -28,25 +28,23 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //Admin
-Route::group(['prefix' => 'admin',  'middleware' => 'admin-verify'], function () {
+Route::group(['prefix' => 'admin',  'middleware' => ['admin.verify','auth']], function () {
     //User
-    Route::get('user', [UserController::class, 'index'])->name('admin');
-    Route::get('user/create', [UserController::class, 'create']);
-    Route::post('user/create', [UserController::class, 'store']);
+    Route::resource('user', UserController::class);
 
     //SendEmail
     Route::get('FormSendEmail', [UserController::class, 'email']);
     Route::post('send', [UserController::class, 'sendMailUserProfile'])->name('send');
 
     //Role
-    Route::get('role', [RoleController::class, 'index']);
+    Route::resource('role', RoleController::class);
 
     //Permission
-    Route::get('permission', [PermissionController::class, 'index']);
+    Route::resource('permission', PermissionController::class);
 
     //Product
-    Route::get('product', [ProductController::class, 'index']);
+    Route::resource('product', ProductController::class);
 
     //Category
-    Route::get('category', [CategoryController::class, 'index']);
+    Route::resource('category', CategoryController::class);
 });

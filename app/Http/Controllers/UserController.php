@@ -70,6 +70,6 @@ class UserController extends Controller
             }
         }
 
-        return redirect()->back()->with('message', 'Gửi thành công');
+        return redirect()->back()->with('message', 'Sent successfully');
     }
 }
