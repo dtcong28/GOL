@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -27,12 +28,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'password',
         'type',
+        'verified_at',
     ];
-
 
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value);
+        //bcrypt($value);
+        $this->attributes['password'] = Hash::make($value);
     }
 
     public function school()
@@ -55,6 +57,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Message::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->type == self::TYPES['admin'];
+    }
+
+    public function isStudent()
+    {
+        return $this->type == self::TYPES['student'];
+    }
+
     public function attachments()
     {
         return $this->hasMany(Attachment::class);
@@ -68,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function hasVerifiedEmail()
     {
-        return ! is_null($this->verified_at);
+        return !is_null($this->verified_at);
     }
 
     /**
@@ -80,15 +92,5 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->forceFill([
             'verified_at' => $this->freshTimestamp(),
         ])->save();
-    }
-
-    public function isAdmin()
-    {
-        return $this->type == self::TYPES['admin'];
-    }
-
-    public function isStudent()
-    {
-        return $this->type == self::TYPES['student'];
     }
 }
