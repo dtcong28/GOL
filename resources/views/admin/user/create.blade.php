@@ -9,7 +9,7 @@
             </button>
 
         </div>
-        <form method="post">
+        <form method="post" action="{{route('user.store')}}">
             @if ($errors->any())
                 <div class="alert alert-danger text-center ">
                     Vui lòng kiểm tra lại dữ liệu
