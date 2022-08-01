@@ -32,7 +32,8 @@ class LoginController extends Controller
     {
         $input = $request->all();
 
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+        $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        if (auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password']))) {
             if (auth()->user()->type == '1') {
                 return redirect()->route('admin');
             } else {
