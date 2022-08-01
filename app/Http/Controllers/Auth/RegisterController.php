@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\Auth\RegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
@@ -63,11 +61,6 @@ class RegisterController extends Controller
         event(new Registered($user));
         //$this->guard()->login($user);
 
-        // $this->activationService->sendActivationMail($user);
-
         return redirect('/login')->with('status', 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.');
-        // return $this->registered($request, $user)
-        //                 ?: redirect($this->redirectPath());
     }
-
 }

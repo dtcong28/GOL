@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        
         User::factory()
             ->count(10)
             ->state(new Sequence(
@@ -26,7 +25,7 @@ class UserSeeder extends Seeder
                 ],
             ))
             ->create();
-        
+
         DB::table('users')->insert([
             'username' => 'admin',
             'type' => '1',

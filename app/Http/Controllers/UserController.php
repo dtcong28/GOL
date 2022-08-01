@@ -8,7 +8,6 @@ use App\Http\Service\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -73,5 +72,4 @@ class UserController extends Controller
 
         return redirect()->back()->with('message', 'Gửi thành công');
     }
-
 }

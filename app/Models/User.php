@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use AuthenticableTrait;
     use Notifiable;
 
-    const TYPES = [
+    public const TYPES = [
         'admin' => 1,
         'student' => 2,
     ];
@@ -62,10 +62,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * 
+     *
      * Xác định xem người dùng đã xác minh địa chỉ email của họ chưa
      * bằng việc kiểm tra trường email_verified_at có null hay không
-     * 
+     *
      */
     public function hasVerifiedEmail()
     {
