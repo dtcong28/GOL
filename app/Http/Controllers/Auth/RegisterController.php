@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
@@ -25,7 +24,6 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = 'login';
 
     public function __construct()
@@ -40,7 +38,7 @@ class RegisterController extends Controller
             'username' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            
+
         ]);
     }
 
@@ -62,8 +60,7 @@ class RegisterController extends Controller
 
         $user = $this->create($request->all());
         event(new Registered($user));
-        //$this->guard()->login($user);
 
-        return redirect('/login')->with('status', 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.');
+        return redirect('/login')->with('status', 'Please check your email and verify according to the instructions.');
     }
 }

@@ -6,7 +6,7 @@ use Auth;
 use Closure;
 use Illuminate\Http\Request;
 
-class UserAccess
+class AdminVerifyMiddleware
 {
     /**
      * Handle an incoming request.
@@ -21,7 +21,7 @@ class UserAccess
             return redirect('/login');
         }
 
-        if (Auth::user()->type == 1) {
+        if (Auth::user()->isAdmin()) {
             return $next($request);
         }
         return redirect('/home');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -28,17 +29,21 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    protected function redirectTo()
+    {
+        if (Auth::user()->isAdmin()) {
+            return '/admin/user';
+        }
+        return '/home';
+    }
+
     public function login(Request $request)
     {
         $input = $request->all();
 
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         if (auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password']))) {
-            if (auth()->user()->type == '1') {
-                return redirect()->route('admin');
-            } else {
-                return redirect()->route('home');
-            }
+            return redirect($this->redirectPath());
         } else {
             return redirect()->route('login')
                 ->with('error', 'Email-Address And Password Are Wrong.');

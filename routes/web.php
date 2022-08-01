@@ -28,7 +28,7 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //Admin
-Route::group(['prefix' => 'admin',  'middleware' => 'user-access'], function () {
+Route::group(['prefix' => 'admin',  'middleware' => 'admin-verify'], function () {
     //User
     Route::get('user', [UserController::class, 'index'])->name('admin');
     Route::get('user/create', [UserController::class, 'create']);
