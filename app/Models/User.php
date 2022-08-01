@@ -29,7 +29,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'type',
     ];
 
-    protected $guarded = [];
 
     public function setPasswordAttribute($value)
     {
