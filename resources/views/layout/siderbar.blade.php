@@ -5,6 +5,7 @@
             <li><a href="{{ url('admin/user') }}">User management</a></li>
             <li><a href="{{ url('admin/role') }}">Role management</a></li>
             <li><a href="{{ url('admin/permission') }}">Permission management</a></li>
+            <li><a href="{{ url('admin/permission_group') }}">Permission group</a></li>
         </ul>
     </li>
     <li class="pt-3">
