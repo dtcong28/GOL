@@ -10,7 +10,7 @@
 
         </div>
         <form method="post" action="{{route('user.store')}}">
-            @if($errors->any())
+            @if ($errors->any())
                 <div class="alert alert-danger text-center ">
                     Vui lòng kiểm tra lại dữ liệu
                 </div>
