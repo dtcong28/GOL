@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\PermissionGroupRequest;
 
 class PermissionGroupController extends Controller
 {
-    private $permissionGroupRepository;
+    protected $permissionGroupRepository;
 
     public function __construct(PermissionGroupRepositoryInterface $permissionGroupRepository)
     {
@@ -16,43 +16,48 @@ class PermissionGroupController extends Controller
 
     public function index()
     {
-        $permissionGroups = $this->permissionGroupRepository->paginate();
-        return view('admin.permission_group.index', ['permissionGroups' => $permissionGroups]);
+        return view('admin.permission-group.index', [
+            'permissionGroups' => $this->permissionGroupRepository->paginate()
+        ]);
     }
 
 
     public function create()
     {
-        return view('admin.permission_group.create');
+        return view('admin.permission-group.form');
     }
 
     public function store(PermissionGroupRequest $request)
     {
         $this->permissionGroupRepository->save($request->all());
-        return redirect()->route('permission_group.index');
+        return redirect()->route('permission-group.index');
     }
 
     public function show($id)
     {
-        $permissionGroupById = $this->permissionGroupRepository->findById($id);
-        return view('admin.permission_group.show', ['permissionGroupById' => $permissionGroupById]);
+        if (!$permissionGroup = $this->permissionGroupRepository->findById($id)) {
+            abort(404);
+        }
+        return view('admin.permission-group.show', ['permissionGroup' => $permissionGroup]);
     }
 
     public function edit($id)
     {
-        $permissionGroupById = $this->permissionGroupRepository->findById($id);
-        return view('admin.permission_group.edit', ['permissionGroupById' => $permissionGroupById]);
+        if (!$permissionGroup = $this->permissionGroupRepository->findById($id)) {
+            abort(404);
+        }
+        return view('admin.permission-group.form', ['permissionGroup' => $permissionGroup]);
     }
 
     public function update(PermissionGroupRequest $request, $id)
     {
         $this->permissionGroupRepository->save($request->all(), ['id' => $id]);
-        return redirect()->route('permission_group.index');
+        return redirect()->route('permission-group.index');
     }
 
     public function destroy($id)
     {
         $this->permissionGroupRepository->deleteById($id);
-        return redirect()->route('permission_group.index');
+        return redirect()->route('permission-group.index');
     }
 }

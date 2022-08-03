@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +45,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['admin.verify','auth']], fu
     Route::resource('permission', PermissionController::class);
 
     //Permission Group
-    Route::resource('permission_group', PermissionGroupController::class);
+    Route::resource('permission-group', PermissionGroupController::class);
 
     //Product
     Route::resource('product', ProductController::class);
