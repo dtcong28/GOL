@@ -8,8 +8,4 @@ class PermissionController extends Controller
     {
         return view('admin.permission.index');
     }
-    public function create()
-    {
-        return view('admin.permission.create');
-    }
 }
