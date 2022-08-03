@@ -5,13 +5,17 @@
         <div>
             <div class="row">
                 <h6 class="col-4">Permission List</h6>
+                <div class="col-6"></div>
+                <button class="btn btn-primary col-1" style="width: 120px"><a href="/admin/permission/create"
+                                                                              style="color: white">+ Add new</a>
+                </button>
             </div>
 
             <table class="table table-bordered mt-3">
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>

@@ -2,9 +2,10 @@
     <li class="pt-3">
         <span>System</span>
         <ul>
-            <li><a href="{{ url('admin/user') }}">User management</a></li>
-            <li><a href="{{ url('admin/role') }}">Role management</a></li>
-            <li><a href="{{ url('admin/permission') }}">Permission management</a></li>
+            <li><a href="{{ route('user.index') }}">User management</a></li>
+            <li><a href="{{ route('role.index') }}">Role management</a></li>
+            <li><a href="{{ route('permission.index') }}">Permission management</a></li>
+            <li><a href="{{ route('permission-group.index') }}">Permission group</a></li>
         </ul>
     </li>
     <li class="pt-3">
