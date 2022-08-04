@@ -11,4 +11,6 @@ interface BaseRepositoryInterface
     public function findById($id);
 
     public function deleteById($id);
+
+    public function getAll();
 }
