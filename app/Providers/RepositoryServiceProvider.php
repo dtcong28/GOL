@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Repository\BaseRepositoryInterface;
 use App\Repository\PermissionGroupRepositoryInterface;
 use App\Repository\Eloquent\PermissionGroupRepository;
+use App\Repository\PermissionRepositoryInterface;
+use App\Repository\Eloquent\PermissionRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -18,6 +20,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(PermissionGroupRepositoryInterface::class, PermissionGroupRepository::class);
+        $this->app->bind(PermissionRepositoryInterface::class, PermissionRepository::class);
     }
 
     /**

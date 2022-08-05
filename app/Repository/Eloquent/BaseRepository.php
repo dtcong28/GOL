@@ -28,4 +28,9 @@ class BaseRepository implements BaseRepositoryInterface
     {
         return $this->model->destroy($id);
     }
+
+    public function getAll()
+    {
+        return $this->model->all();
+    }
 }
