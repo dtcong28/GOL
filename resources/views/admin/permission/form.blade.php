@@ -50,14 +50,14 @@
                 </span>
                 @enderror
             </div>
-            @if(!empty($AllPermissionGroup))
+            @if(!empty($permissionGroups))
             <div class="form-group pt-3">
                 <label>Select permission group</label>
                 <select class="form-select" name="permission_group_id">
                     @if(empty($permission))
                     <option selected>--Select permission group--</option>
                     @endif
-                    @foreach($AllPermissionGroup as $permissionGroup)
+                    @foreach($permissionGroups as $permissionGroup)
                     <option value="{{$permissionGroup->id}}" <?php if (!empty($permission) && $permissionGroup->id == $permission->permission_group_id) echo "selected" ?>>{{$permissionGroup->name}}</option>
                     @endforeach
                 </select>

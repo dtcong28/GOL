@@ -26,7 +26,7 @@ class PermissionController extends Controller
 
     public function create()
     {
-        return view('admin.permission.form', ['AllPermissionGroup' => $this->permissionGroupRepository->getAll()]);
+        return view('admin.permission.form', ['permissionGroups' => $this->permissionGroupRepository->getAll()]);
     }
 
     public function store(PermissionRequest $request)
@@ -48,7 +48,7 @@ class PermissionController extends Controller
         if (!$permission = $this->permissionRepository->findById($id)) {
             abort(404);
         }
-        return view('admin.permission.form', ['permission' => $permission, 'AllPermissionGroup' => $this->permissionGroupRepository->getAll()]);
+        return view('admin.permission.form', ['permission' => $permission, 'permissionGroups' => $this->permissionGroupRepository->getAll()]);
     }
 
     public function update(PermissionRequest $request, $id)
