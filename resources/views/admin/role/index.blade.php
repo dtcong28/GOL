@@ -9,7 +9,11 @@
             <button class="btn btn-primary col-1" style="width: 120px"><a href="{{route('role.create')}}" style="color: white">+ Add new</a>
             </button>
         </div>
-
+        @if (session()->has('success'))
+        <div class="alert alert-success text-center">
+            {{ session()->get('success') }}
+        </div>
+        @endif
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
