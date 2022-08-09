@@ -26,6 +26,7 @@ class RoleRequest extends FormRequest
     {
         return [
             'name' =>['required', Rule::unique('roles')->ignore($this->role)],
+            'permission_ids' => ['required','array'],
         ];
     }
 }
