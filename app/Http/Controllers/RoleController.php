@@ -27,7 +27,8 @@ class RoleController extends Controller
 
     public function create()
     {
-        return view('admin.role.form', ['permissionGroups' => $this->permissionGroupRepository->getAll()]);
+        // join 2 table to fix query N + 1
+        return view('admin.role.form', ['permissionGroups' => $this->permissionGroupRepository->with('permissions')->get()]);
     }
 
     public function store(RoleRequest $request)
