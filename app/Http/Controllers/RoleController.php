@@ -39,11 +39,11 @@ class RoleController extends Controller
             $role = $this->roleRepository->save($request->validated());
             $role->permissions()->sync($request->permission_ids);
             DB::commit();
+            return redirect()->route('role.index')->with('success', 'Creation success.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('message', 'Something went wrong');
         }
-        return redirect()->route('role.index')->with('success', 'Creation success.');
     }
 
     public function show($id)
@@ -70,12 +70,11 @@ class RoleController extends Controller
             $role = $this->roleRepository->save($request->validated(), ['id' => $id]);
             $role->permissions()->sync($request->permission_ids);
             DB::commit();
+            return redirect()->route('role.index')->with('success', 'Update success.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('message', 'Something went wrong');
         }
-
-        return redirect()->route('role.index')->with('success', 'Update success.');
     }
 
     public function destroy($id)
@@ -86,11 +85,10 @@ class RoleController extends Controller
             $this->roleRepository->findById($id)->permissions()->detach();
             $this->roleRepository->deleteById($id);
             DB::commit();
+            return redirect()->route('role.index')->with('success', 'Delete success.');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('message', 'Something went wrong');
         }
-
-        return redirect()->route('role.index')->with('success', 'Delete success.');
     }
 }
