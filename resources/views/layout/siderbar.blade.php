@@ -3,30 +3,30 @@
 
 
     <li class="pt-3">
-        <span>{{ __('admin.Language') }}</span>
+        <span>{{ __('siderbar.Language') }}</span>
         <ul>
             <li><a href="{{ route('lang',['lang' => 'vi']) }}">VI</a>--<a href="{{ route('lang',['lang' => 'en' ]) }}">EN</a></li>
         </ul>
     </li>
     <li class="pt-3">
-        <span>{{ __('admin.System')}}</span>
+        <span>{{ __('siderbar.System')}}</span>
         <ul>
-            <li><a href="{{ route('user.index') }}">{{ __('admin.User management')}}</a></li>
-            <li><a href="{{ route('role.index') }}">{{ __('admin.Role management')}}</a></li>
-            <li><a href="{{ route('permission.index') }}">{{ __('admin.Permission management')}}</a></li>
-            <li><a href="{{ route('permission-group.index') }}">{{ __('admin.Permission group management')}}</a></li>
+            <li><a href="{{ route('user.index') }}">{{ __('siderbar.User management')}}</a></li>
+            <li><a href="{{ route('role.index') }}">{{ __('siderbar.Role management')}}</a></li>
+            <li><a href="{{ route('permission.index') }}">{{ __('siderbar.Permission management')}}</a></li>
+            <li><a href="{{ route('permission-group.index') }}">{{ __('siderbar.Permission group management')}}</a></li>
         </ul>
     </li>
     <li class="pt-3">
-        <span>{{ __('admin.Catalog')}}</span>
+        <span>{{ __('siderbar.Catalog')}}</span>
         <ul>
-            <li><a href="{{ url('admin/product') }}">{{ __('admin.Product management')}}</a></li>
-            <li><a href="{{ url('admin/category') }}">{{ __('admin.Category management')}}</a></li>
+            <li><a href="{{ url('admin/product') }}">{{ __('siderbar.Product management')}}</a></li>
+            <li><a href="{{ url('admin/category') }}">{{ __('siderbar.Category management')}}</a></li>
         </ul>
     </li>
     <li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            <button>{{ __('admin.Logout')}}</button>
+            <button>{{ __('button.Logout')}}</button>
             @csrf
         </form>
     </li>
