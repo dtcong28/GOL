@@ -29,7 +29,7 @@ return [
     "Action"=>"Action",
     "Created at"=>"Created at",
     "Updated at"=>"Updated at",
-    
+
 
     "Permission List"=>"Permission List",
     "Permission"=>"Permission",
@@ -55,7 +55,7 @@ return [
     "Password confirm"=>"Password confirm",
     "Address"=>"Address",
     "Facebook link"=>"Facebook link",
-   
+
     "Send email to user"=>"Send email to user",
     "All user"=> "All user",
     "Attach file"=> "Attach file",
@@ -65,7 +65,7 @@ return [
     "Avatar"=> "Avatar",
 
     "Product List"=>"Product List",
-    "Amount"=>"Amount", 
+    "Amount"=>"Amount",
 
     "Please double check the data"=>"Please double check the data"
 

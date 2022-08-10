@@ -29,7 +29,7 @@ return [
     "Action"=>"Hành động",
     "Created at"=>"Được tạo lúc",
     "Updated at"=>"Đã cập nhật lúc",
-    
+
 
     "Permission List"=>"Danh sách quyền",
     "Permission"=>"Quyền",
@@ -55,7 +55,7 @@ return [
     "Password confirm"=>"Xác nhận mật khẩu",
     "Address"=>"Địa chỉ",
     "Facebook link"=>"Liên kết Facebook",
-   
+
     "Send email to user"=>"Email tới người dùng",
     "All user"=> "Tất cả người dùng",
     "Attach file"=> "Đính kèm tệp",
@@ -65,7 +65,7 @@ return [
     "Avatar"=> "Hình đại diện",
 
     "Product List"=>"Danh sách Sản phẩm",
-    "Amount"=>"Số lượng", 
+    "Amount"=>"Số lượng",
 
     "Please double check the data"=>"Vui lòng kiểm tra lại dữ liệu",
     "Successfully added new"=>"Thêm mới thành công"
