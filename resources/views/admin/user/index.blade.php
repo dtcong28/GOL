@@ -4,23 +4,23 @@
     <div class="container pt-5">
         <div>
             <div class="row">
-                <h6 class="col-4">@lang('User List')</h6>
+                <h6 class="col-4">{{ __('admin.User List')}}</h6>
                 <div class="col-4"></div>
                 <button class="btn btn-primary col-1" style="width: 100px; margin-right:10px"><a href="/admin/FormSendEmail"
-                                                                              style="color: white">@lang('Send mail')</a>
+                                                                              style="color: white">{{ __('admin.Send mail')}}</a>
                 </button>
                 <button class="btn btn-primary col-1" style="width: 120px"><a href="/admin/user/create"
-                                                                              style="color: white">+ @lang('Add new')</a>
+                                                                              style="color: white">+ {{ __('admin.Add new')}}</a>
                 </button>
             </div>
 
             <table class="table table-bordered mt-3">
                 <thead>
                 <tr>
-                    <th class="text-center" scope="col">@lang('Avatar')</th>
-                    <th scope="col">@lang('Name')</th>
+                    <th class="text-center" scope="col">{{ __('admin.Avatar')}}</th>
+                    <th scope="col">{{ __('admin.Name')}}</th>
                     <th scope="col">Email</th>
-                    <th scope="col">@lang('Action')</th>
+                    <th scope="col">{{ __('admin.Action')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,8 +33,8 @@
                             <td>{{ $user['name'] }}</td>
                             <td>{{ $user['email'] }}</td>
                             <td>
-                                <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="button" class="btn btn-primary btn-sm">{{ __('admin.Edit')}}</button>
+                                <button type="button" class="btn btn-danger btn-sm">{{ __('admin.Delete')}}</button>
                             </td>
                         </tr>
                     @endforeach

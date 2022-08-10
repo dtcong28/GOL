@@ -4,15 +4,15 @@
     <div class="container pt-5">
         <div>
             <div class="row">
-                <h6 class="col-4">@lang('Product List')</h6>
+                <h6 class="col-4">{{ __('admin.Product List')}}</h6>
             </div>
 
             <table class="table table-bordered mt-3">
                 <thead>
                 <tr>
-                    <th scope="col">@lang('Name')</th>
-                    <th scope="col">@lang('Amount')</th>
-                    <th scope="col">@lang('Action')</th>
+                    <th scope="col">{{ __('admin.Name')}}</th>
+                    <th scope="col">{{ __('admin.Amount')}}</th>
+                    <th scope="col">{{ __('admin.Action')}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,9 +21,9 @@
                         <td>Product test</td>
                         <td>5</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm">@lang('Edit')</button>
-                            <button type="button" class="btn btn-danger btn-sm">@lang('Delete')</button>
-                            <button type="button" class="btn btn-success btn-sm">@lang('Show')</button>
+                            <button type="button" class="btn btn-primary btn-sm">{{ __('admin.Edit')}}</button>
+                            <button type="button" class="btn btn-danger btn-sm">{{ __('admin.Delete')}}</button>
+                            <button type="button" class="btn btn-success btn-sm">{{ __('admin.Show')}}</button>
                         </td>
                     </tr>
                 @endfor

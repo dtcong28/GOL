@@ -3,30 +3,30 @@
 
 
     <li class="pt-3">
-        <span>@lang('Language')</span>
+        <span>{{ __('admin.Language') }}</span>
         <ul>
             <li><a href="{{ route('lang',['lang' => 'vi']) }}">VI</a>--<a href="{{ route('lang',['lang' => 'en' ]) }}">EN</a></li>
         </ul>
     </li>
     <li class="pt-3">
-        <span>@lang('System')</span>
+        <span>{{ __('admin.System')}}</span>
         <ul>
-            <li><a href="{{ route('user.index') }}">@lang('User management')</a></li>
-            <li><a href="{{ route('role.index') }}">@lang('Role management')</a></li>
-            <li><a href="{{ route('permission.index') }}">@lang('Permission management')</a></li>
-            <li><a href="{{ route('permission-group.index') }}">@lang('Permission group management')</a></li>
+            <li><a href="{{ route('user.index') }}">{{ __('admin.User management')}}</a></li>
+            <li><a href="{{ route('role.index') }}">{{ __('admin.Role management')}}</a></li>
+            <li><a href="{{ route('permission.index') }}">{{ __('admin.Permission management')}}</a></li>
+            <li><a href="{{ route('permission-group.index') }}">{{ __('admin.Permission group management')}}</a></li>
         </ul>
     </li>
     <li class="pt-3">
-        <span>@lang('Catalog')</span>
+        <span>{{ __('admin.Catalog')}}</span>
         <ul>
-            <li><a href="{{ url('admin/product') }}">@lang('Product management')</a></li>
-            <li><a href="{{ url('admin/category') }}">@lang('Category management')</a></li>
+            <li><a href="{{ url('admin/product') }}">{{ __('admin.Product management')}}</a></li>
+            <li><a href="{{ url('admin/category') }}">{{ __('admin.Category management')}}</a></li>
         </ul>
     </li>
     <li>
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            <button>@lang('Logout')</button>
+            <button>{{ __('admin.Logout')}}</button>
             @csrf
         </form>
     </li>

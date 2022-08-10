@@ -3,9 +3,9 @@
 
 <div class="container pt-4">
     <div class="row">
-        <h3 class="col-4">@lang('Permission')</h3>
+        <h3 class="col-4">{{ __('admin.Permission')}}</h3>
         <div class="col-6"></div>
-        <button class="btn btn-primary" style="width: 100px"><a href="/admin/permission" style="color: white">@lang('Back')</a>
+        <button class="btn btn-primary" style="width: 100px"><a href="/admin/permission" style="color: white">{{ __('admin.Back')}}</a>
         </button>
 
     </div>
@@ -13,11 +13,11 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">@lang('Name')</th>
-                <th scope="col">@lang('Key')</th>
-                <th scope="col">@lang('Permission group')</th>
-                <th scope="col">@lang('Created at')</th>
-                <th scope="col">@lang('Updated at')</th>
+                <th scope="col">{{ __('admin.Name')}}</th>
+                <th scope="col">{{ __('admin.Key')}}</th>
+                <th scope="col">{{ __('admin.Permission group')}}</th>
+                <th scope="col">{{ __('admin.Created at')}}</th>
+                <th scope="col">{{ __('admin.Updated at')}}</th>
             </tr>
         </thead>
         <tbody>

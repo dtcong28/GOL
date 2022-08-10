@@ -3,16 +3,16 @@
 
 <div class="container pt-4">
     <div class="row">
-        <h3 class="col-4">@lang('Create a User')</h3>
+        <h3 class="col-4">{{ __('admin.Create a User')}}</h3>
         <div class="col-6"></div>
-        <button class="btn btn-primary" style="width: 100px"><a href="/admin/user" style="color: white">@lang('Back')</a>
+        <button class="btn btn-primary" style="width: 100px"><a href="/admin/user" style="color: white">{{ __('admin.Back')}}</a>
         </button>
 
     </div>
     <form method="post" action="{{route('user.store')}}">
         @if ($errors->any())
         <div class="alert alert-danger text-center ">
-            @lang('Please double check the data')
+            {{ __('admin.Please double check the data')}}
         </div>
         @endif
         @if (session()->has('message'))
@@ -21,7 +21,7 @@
         </div>
         @endif
         <div class="form-group">
-            <label>@lang('Name')</label>
+            <label>{{ __('admin.Name')}}</label>
             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
             @error('name')
             <span style="color: red">{{ $message }}</span>
@@ -36,14 +36,14 @@
         </div>
         <div class="row pt-3">
             <div class="form-group col">
-                <label>@lang('Password') </label>
+                <label>{{ __('admin.Password')}} </label>
                 <input type="password" class="form-control" name="password" value="{{ old('password') }}">
                 @error('password')
                 <span style="color: red">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group col">
-                <label>@lang('Password confirm') </label>
+                <label>{{ __('admin.Password confirm')}} </label>
                 <input type="password" class="form-control" name="password_confirm" value="{{ old('password_confirm') }}">
                 @error('password_confirm')
                 <span style="color: red">{{ $message }}</span>
@@ -51,11 +51,11 @@
             </div>
         </div>
         <div class="form-group pt-3">
-            <label>@lang('Address')</label>
+            <label>{{ __('admin.Address')}}</label>
             <input type="text" class="form-control" name="address" value="{{ old('address') }}">
         </div>
         <div class="form-group pt-3">
-            <label>@lang('Facebook link')</label>
+            <label>{{ __('admin.Facebook link')}}</label>
             <input type="text" class="form-control" name="facebook" placeholder="https://example.com" value="{{ old('facebook') }}">
             @error('facebook')
             <span style="color: red">{{ $message }}</span>
@@ -69,14 +69,14 @@
             @enderror
         </div>
         <div class="form-group pt-3">
-            <label>@lang('Description')</label>
+            <label>{{ __('admin.Description')}}</label>
             <textarea class="form-control" name="description" rows="3"></textarea>
         </div>
         <div class="pt-4 text-center pb-5">
-            <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">@lang('Save')
+            <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">{{ __('admin.Save')}}
             </button>
             <button type="submit" class="btn btn-secondary rounded-pill" style="margin-left: 7px; width: 90px">
-                @lang('Reset')
+                {{ __('admin.Reset')}}
             </button>
         </div>
         @csrf

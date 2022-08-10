@@ -4,27 +4,27 @@
 <div class="container pt-4">
     @if(empty($role))
     <div class="row">
-        <h3 class="col-4">@lang('Create Role')</h3>
+        <h3 class="col-4">{{ __('admin.Create Role')}}</h3>
         <div class="col-6"></div>
-        <button class="btn btn-primary" style="width: 100px"><a href="{{route('role.index')}}" style="color: white">@lang('Back')</a>
+        <button class="btn btn-primary" style="width: 100px"><a href="{{route('role.index')}}" style="color: white">{{ __('admin.Back')}}</a>
         </button>
 
     </div>
     <form method="post" action="{{route('role.store')}}">
         @elseif(isset($act))
         <div class="row">
-            <h3 class="col-4">@lang('Show Role')</h3>
+            <h3 class="col-4">{{ __('admin.Show Role')}}</h3>
             <div class="col-6"></div>
-            <button class="btn btn-primary" style="width: 100px"><a href="{{route('role.index')}}" style="color: white">@lang('Back')</a>
+            <button class="btn btn-primary" style="width: 100px"><a href="{{route('role.index')}}" style="color: white">{{ __('admin.Back')}}</a>
             </button>
 
         </div>
         <form method="post">
             @else
             <div class="row">
-                <h3 class="col-4">@lang('Edit Role')</h3>
+                <h3 class="col-4">{{ __('admin.Edit Role')}}</h3>
                 <div class="col-6"></div>
-                <button class="btn btn-primary" style="width: 100px"><a href="{{route('role.index')}}" style="color: white">@lang('Back')</a>
+                <button class="btn btn-primary" style="width: 100px"><a href="{{route('role.index')}}" style="color: white">{{ __('admin.Back')}}</a>
                 </button>
 
             </div>
@@ -33,7 +33,7 @@
                 @endif
                 @if ($errors->any())
                 <div class="alert alert-danger text-center ">
-                    @lang('Please double check the data')
+                    {{ __('admin.Please double check the data')}}
                 </div>
                 @endif
                 @if (session()->has('message'))
@@ -42,7 +42,7 @@
                 </div>
                 @endif
                 <div class="form-group">
-                    <label>@lang('Name')</label>
+                    <label>{{ __('admin.Name')}}</label>
                     <input type="text" class="form-control" name="name" value="{{ old('name', $role->name ?? '') }}" <?php if ((isset($act))) echo 'readonly' ?>>
                     @error('name')
                     <span style="color: red">{{ $message }}</span>
@@ -57,7 +57,7 @@
                 }
                 @endphp
                 <div class="col mt-4">
-                    <label>@lang('Permission groups')</label>
+                    <label>{{ __('admin.Permission groups')}}</label>
                     @foreach( $permissionGroups as $permissionGroup)
                     <div class="border border-dark p-1 rounded mt-2">
                         <div class="row">
@@ -74,16 +74,16 @@
                 </div>
                 @if(!isset($act))
                 <div class="pt-4 text-center pb-5">
-                    <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">@lang('Save')
+                    <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">{{ __('admin.Save') }}
                     </button>
                 </div>
                 @else
                 <div class="form-group">
-                    <label>@lang('Created at')</label>
+                    <label>{{ __('admin.Created at')}}</label>
                     <input type="text" class="form-control" name="create_at" value="{{ $role['created_at']}}" readonly>
                 </div>
                 <div class="form-group">
-                    <label>@lang('Updated at')</label>
+                    <label>{{ __('admin.Updated at')}}</label>
                     <input type="text" class="form-control" name="updated_at" value="{{ $role['updated_at']}}" readonly>
                 </div>
                 @endif
