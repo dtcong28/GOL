@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LangController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -52,4 +53,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['admin.verify','auth']], fu
 
     //Category
     Route::resource('category', CategoryController::class);
+
+    //Lang
+    Route::get('lang/{lang}', [LangController::class, 'changeLang'])->name('lang');
 });

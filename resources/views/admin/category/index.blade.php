@@ -4,15 +4,15 @@
     <div class="container pt-5">
         <div>
             <div class="row">
-                <h6 class="col-4">Category List</h6>
+                <h6 class="col-4">@lang('Category List')</h6>
             </div>
 
             <table class="table table-bordered mt-3">
                 <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">@lang('Name')</th>
+                    <th scope="col">@lang('Description')</th>
+                    <th scope="col">@lang('Action')</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,8 +21,9 @@
                         <td>Nhập khẩu</td>
                         <td>Nhập từ nước Nhật</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="button" class="btn btn-primary btn-sm">@lang('Edit')</button>
+                            <button type="button" class="btn btn-danger btn-sm">@lang('Delete')</button>
+                            <button type="button" class="btn btn-success btn-sm">@lang('Show')</button>
                         </td>
                     </tr>
                 @endfor
