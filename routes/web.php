@@ -52,4 +52,5 @@ Route::group(['prefix' => 'admin',  'middleware' => ['admin.verify','auth']], fu
 
     //Category
     Route::resource('category', CategoryController::class);
+
 });

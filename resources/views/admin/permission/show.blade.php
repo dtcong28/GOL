@@ -3,9 +3,9 @@
 
 <div class="container pt-4">
     <div class="row">
-        <h3 class="col-4">Permission Group</h3>
+        <h3 class="col-4">{{ __('permission.Permission')}}</h3>
         <div class="col-6"></div>
-        <button class="btn btn-primary" style="width: 100px"><a href="/admin/permission" style="color: white">Back</a>
+        <button class="btn btn-primary" style="width: 100px"><a href="/admin/permission" style="color: white">{{ __('button.Back')}}</a>
         </button>
 
     </div>
@@ -13,11 +13,11 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Key</th>
-                <th scope="col">Permission group</th>
-                <th scope="col">Created at</th>
-                <th scope="col">Updated at</th>
+                <th scope="col">{{ __('label.Name')}}</th>
+                <th scope="col">{{ __('permission.Key')}}</th>
+                <th scope="col">{{ __('label.Permission Group')}}</th>
+                <th scope="col">{{ __('label.Created at')}}</th>
+                <th scope="col">{{ __('label.Updated at')}}</th>
             </tr>
         </thead>
         <tbody>

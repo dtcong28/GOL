@@ -35,7 +35,7 @@ class UserController extends Controller
     {
         $this->userService->create($request->only('name', 'email', 'phone', 'address'));
 
-        return redirect()->back()->with('message', 'Thêm mới thành công');
+        return redirect()->back()->with('message', 'Successfully added new');
     }
 
     public function email()

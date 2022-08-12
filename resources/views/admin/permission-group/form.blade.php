@@ -4,18 +4,18 @@
 <div class="container pt-4">
     @if(empty($permissionGroup))
     <div class="row">
-        <h3 class="col-4">Create Permission Group</h3>
+        <h3 class="col-4">{{ __('permission_group.Create Permission Group')}}</h3>
         <div class="col-6"></div>
-        <button class="btn btn-primary" style="width: 100px"><a href="/admin/permission-group" style="color: white">Back</a>
+        <button class="btn btn-primary" style="width: 100px"><a href="/admin/permission-group" style="color: white">{{ __('button.Back')}}</a>
         </button>
 
     </div>
     <form method="post" action="{{route('permission-group.store')}}">
         @else
         <div class="row">
-            <h3 class="col-4">Edit Permission Group</h3>
+            <h3 class="col-4">{{ __('permission_group.Edit Permission Group')}}</h3>
             <div class="col-6"></div>
-            <button class="btn btn-primary" style="width: 100px"><a href="/admin/permission-group" style="color: white">Back</a>
+            <button class="btn btn-primary" style="width: 100px"><a href="/admin/permission-group" style="color: white">{{ __('button.Back')}}</a>
             </button>
 
         </div>
@@ -24,7 +24,7 @@
             @endif
             @if ($errors->any())
             <div class="alert alert-danger text-center ">
-                Vui lòng kiểm tra lại dữ liệu
+                {{ __('message.Please double check the data')}}
             </div>
             @endif
             @if (session()->has('message'))
@@ -33,7 +33,7 @@
             </div>
             @endif
             <div class="form-group">
-                <label>Name</label>
+                <label>{{ __('label.Name')}}</label>
                 @if(empty($permissionGroup))
                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                 @else
@@ -44,7 +44,7 @@
                 @enderror
             </div>
             <div class="pt-4 text-center pb-5">
-                <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">Save
+                <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">{{ __('button.Save')}}
                 </button>
             </div>
             @csrf
