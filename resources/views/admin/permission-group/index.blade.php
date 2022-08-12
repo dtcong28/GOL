@@ -1,12 +1,18 @@
 @extends('main')
 @section('content')
-
-<div class="container pt-5">
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">{{ __('permission_group.Permission Group List')}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container pt-1">
     <div>
         <div class="row">
-            <h6 class="col-4">{{ __('permission_group.Permission Group List')}}</h6>
-            <div class="col-6"></div>
-            <button class="btn btn-primary col-1" style="width: 120px"><a href="/admin/permission-group/create" style="color: white">+ {{ __('button.Add new')}}</a>
+            <button class="btn btn-primary btn-sm" style="width: 120px"><a href="/admin/permission-group/create" style="color: white">+ {{ __('button.Add new')}}</a>
             </button>
         </div>
 

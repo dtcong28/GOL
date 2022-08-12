@@ -5,7 +5,7 @@
     <div class="row">
         <h3 class="col-4">{{ __('user.Create a User')}}</h3>
         <div class="col-6"></div>
-        <button class="btn btn-primary" style="width: 100px"><a href="/admin/user" style="color: white">{{ __('button.Back')}}</a>
+        <button class="btn btn-primary btn-sm" style="width: 100px"><a href="/admin/user" style="color: white">{{ __('button.Back')}}</a>
         </button>
 
     </div>
