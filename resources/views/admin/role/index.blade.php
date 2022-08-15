@@ -49,7 +49,9 @@
             </tbody>
 
         </table>
+        @if(!empty($roles))
         {{ $roles->links() }}
+        @endif
     </div>
 
 </div>

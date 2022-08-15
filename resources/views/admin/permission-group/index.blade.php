@@ -46,7 +46,9 @@
 
         </table>
 
+        @if(!empty($permissionGroups))
         {{ $permissionGroups->links() }}
+        @endif
 
     </div>
     @endsection

@@ -47,7 +47,9 @@
             </tbody>
 
         </table>
+        @if(!empty($permissions))
         {{ $permissions->links() }}
+        @endif
     </div>
 
 </div>

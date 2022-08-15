@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class RoleSeeder extends Seeder
 {
@@ -14,6 +15,11 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::factory()->count(10)->create();
+        // Role::factory()->count(10)->create();
+        DB::table('roles')->insert([
+            'name' => 'Admin',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

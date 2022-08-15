@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\User;
 
-use App\Rules\ValidateEmailUnique;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -26,11 +26,10 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:2', 'regex:/^[a-zA-Z]+$/u'],
-            'email' => ['required', 'email', 'not_regex:/^[root]/', new ValidateEmailUnique()],
+            'email' => ['required', 'email', 'not_regex:/^[root]/', Rule::unique('users')->ignore($this->user)],
             'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', 'required_with:password_confirm', 'same:password_confirm'],
             'password_confirm' => ['required'],
-            'facebook' => ['url'],
-            'youtube' => ['url'],
+            'role_ids' =>['required'],
         ];
     }
 }
