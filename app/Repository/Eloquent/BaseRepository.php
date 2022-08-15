@@ -8,7 +8,7 @@ class BaseRepository implements BaseRepositoryInterface
 {
     protected $model;
 
-    public function paginate(array $input = [], $perPage = 10)
+    public function paginate(array $input = [], $perPage = 5)
     {
         $query = $this->model->query();
         return $query->paginate($perPage);

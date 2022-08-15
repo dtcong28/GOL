@@ -23,12 +23,25 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $fillable = [
+        'id',
         'name',
         'email',
         'username',
         'password',
         'type',
+        'address',
+        'school_id',
+        'parent_id',
+        'role_id',
         'verified_at',
+        'closed',
+        'code',
+        'social_type',
+        'social_id',
+        'social_name',
+        'social_nickname',
+        'social_avatar',
+        'description',
     ];
 
     public function setPasswordAttribute($value)
@@ -44,7 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class, 'users_roles');
     }
 
     public function tags()

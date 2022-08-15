@@ -9,4 +9,5 @@ return[
     "Permission Group"=>"Nhóm quyền",
     "Amount"=>"Khối lượng",
     "Description"=>"Mô tả",
+    "Role" =>"Vai trò",
 ];

@@ -1,6 +1,5 @@
 @extends('main')
 @section('content')
-
 <div class="container pt-4">
     @if(empty($role))
     <div class="row">

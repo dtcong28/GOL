@@ -29,8 +29,8 @@ class UserRequest extends FormRequest
             'email' => ['required', 'email', 'not_regex:/^[root]/', new ValidateEmailUnique()],
             'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/', 'required_with:password_confirm', 'same:password_confirm'],
             'password_confirm' => ['required'],
-            'facebook' => ['url'],
-            'youtube' => ['url'],
+            'social_type' => ['numeric'],
+            'role_ids' =>['required'],
         ];
     }
 }

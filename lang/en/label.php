@@ -9,4 +9,5 @@ return[
     "Permission Group"=>"Permission Group",
     "Amount"=>"Amount",
     "Description"=>"Description",
+    "Role" =>"Role",
 ];
