@@ -66,7 +66,7 @@
                         @if(!empty($roles))
                         @foreach($roles as $role)
                         <div class="form-check form-check-inline pl-3">
-                            <input class="form-check-input" type="checkbox" name="role_ids[]" value="{{ $role->id }}" {{ ($selectedRoles->contains($role->id)) ? 'checked' : '' }} <?php if (isset($act)) echo 'disabled' ?>>
+                            <input class="form-check-input" type="radio" name="role_ids[]" value="{{ $role->id }}" {{ ($selectedRoles->contains($role->id)) ? 'checked' : '' }} <?php if (isset($act)) echo 'disabled' ?>>
                             <label class="form-check-label">{{ $role->name }}</label>
                         </div>
                         @endforeach
@@ -142,8 +142,10 @@
                     <textarea class="form-control" name="description" rows="3" <?php if ((isset($act))) echo 'readonly' ?>>{{ old('description' , $user->description ?? '') }}</textarea>
                 </div>
                 <div class="pt-1 text-center pb-5">
+                    @if(!isset($act))
                     <button type="submit" class="btn btn-primary rounded-pill" style="margin-right: 7px; width: 90px">{{ __('button.Save')}}
                     </button>
+                    @endif
                     @if(empty($user))
                     <button type="reset" class="btn btn-secondary rounded-pill" style="margin-left: 7px; width: 90px">
                         {{ __('button.Reset')}}

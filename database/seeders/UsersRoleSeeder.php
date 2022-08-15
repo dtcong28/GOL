@@ -16,14 +16,6 @@ class UsersRoleSeeder extends Seeder
      */
     public function run()
     {
-        // for ($i = 0; $i <= 10; $i++) {
-        //     DB::table('users_roles')->insert([
-        //         'user_id' => User::select('id')->orderByRaw("RAND()")->first()->id,
-        //         'role_id' => Role::select('id')->orderByRaw("RAND()")->first()->id,
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ]);
-        // }
         DB::table('users_roles')->insert([
             'user_id' => User::select('id')->where('name', '=', 'Admin')->first()->id,
             'role_id' => Role::select('id')->where('name', '=', 'Admin')->first()->id,
