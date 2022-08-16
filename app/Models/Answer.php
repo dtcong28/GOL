@@ -11,7 +11,7 @@ class Answer extends Model
 
     protected $guarded = [];
 
-    public function questions()
+    public function question()
     {
         return $this->belongsTo(Question::class);
     }

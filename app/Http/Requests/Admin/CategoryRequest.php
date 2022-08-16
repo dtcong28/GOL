@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests\Admin;
-
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 class CategoryRequest extends FormRequest
 {
@@ -23,8 +23,8 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>['required'],
-            'slug' =>['required'],
+            'name' =>['required',Rule::unique('categories')->ignore($this->category)],
+            'slug' =>['required',Rule::unique('categories')->ignore($this->category)],
         ];
     }
 }
