@@ -12,6 +12,8 @@ use App\Repository\Eloquent\RoleRepository;
 use App\Repository\UserRepositoryInterface;
 use App\Repository\Eloquent\UserRepository;
 use Illuminate\Support\ServiceProvider;
+use App\Repository\CategoryRepositoryInterface;
+use App\Repository\Eloquent\CategoryRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PermissionRepositoryInterface::class, PermissionRepository::class);
         $this->app->bind(RoleRepositoryInterface::class, RoleRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
     }
 
     /**
