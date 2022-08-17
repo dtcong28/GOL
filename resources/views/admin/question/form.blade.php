@@ -35,9 +35,14 @@
                     {{ __('message.Please double check the data')}}
                 </div>
                 @endif
-                @if (session()->has('message'))
+                @if (session()->has('success'))
                 <div class="alert alert-success text-center">
-                    {{ session()->get('message') }}
+                    {{ session()->get('success') }}
+                </div>
+                @endif
+                @if (session()->has('error'))
+                <div class="alert alert-warning text-center">
+                    {{ session()->get('error') }}
                 </div>
                 @endif
                 <div class="form-group">
@@ -60,7 +65,7 @@
                         <option selected>--{{ __('question.Select category')}}--</option>
                         @endif
                         @foreach($categories as $category)
-                        <option value="{{$category->id}}"  {{ ($selected == $category->id) ? 'selected' : '' }} >{{$category->name}} </option>
+                        <option value="{{$category->id}}" {{ ($selected == $category->id) ? 'selected' : '' }}>{{$category->name}} </option>
                         @endforeach
                     </select>
                     @error('category_id')
@@ -70,11 +75,11 @@
                     @enderror
                 </div>
                 <div>
-                    
+
                     @for($i=0;$i < 4; $i++) <div class="form-group">
                         <label>{{ __('label.Answer')}} {{$i+1}}</label>
                         <div class="row">
-                            <textarea class="form-control col-10" name="answer[]" rows="2" {{(isset($act)) ? 'readonly' : ''}} >{{(isset($question)) ? $question->answers[$i]->content : ''}}</textarea>
+                            <textarea class="form-control col-10" name="answer[]" rows="2" {{(isset($act)) ? 'readonly' : ''}}>{{(isset($question)) ? $question->answers[$i]->content : ''}}</textarea>
                             <input style="height: 30px;" type="radio" class="col-2" name="radio-answer" id="radio-{{$i}}" value="{{$i}}" {{( isset($question) AND $question->answers[$i]->correct == 1) ? 'checked' : ''}} />
                         </div>
                         @endfor

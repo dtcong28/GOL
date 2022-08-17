@@ -53,7 +53,7 @@ class QuestionController extends Controller
             return redirect()->route('question.index')->with('success', 'Creation success.');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->back()->with('message', 'Something went wrong');
+            return redirect()->back();
         }
     }
 
@@ -94,8 +94,8 @@ class QuestionController extends Controller
 
         try {
             $question = $this->questionRepository->save($request->only('content', 'category_id'), ['id' => $id]);
-            $data = $request->except(['_token', 'radio-answer', 'category_id', 'content','answer']);
             $data['question_id'] = $question->id;
+
             $answers = $this->answerRepository->where('question_id', $id);
             $ids_answer = collect($answers->get())->pluck('id');
             foreach ($request['answer'] as $key => $answer) {

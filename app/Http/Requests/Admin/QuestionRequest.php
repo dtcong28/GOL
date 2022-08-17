@@ -27,8 +27,8 @@ class QuestionRequest extends FormRequest
         return [
             'content' => ['required',Rule::unique('questions')->ignore($this->question)],
             'category_id' => ['required'],
-            'answer' => ['required'],
-            'radio-answer' => ['required'],
+            'answer' => ['required','array'],
+            'radio-answer' => ['required','in:0,1,2,3'],
         ];
     }
 }
