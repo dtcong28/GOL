@@ -12,4 +12,5 @@ return [
 
     "System"=> "Hệ thống",
     "Catalog"=>"Danh mục",
+    "Question management" => "Quản lý câu hỏi",
 ];

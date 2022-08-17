@@ -36,7 +36,7 @@
                         <form class="d-inline" method="post" action="{{ route('permission-group.destroy', $permissionGroup->id) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm"> {{ __('button.Delete') }}</button>
+                            <button type="submit" onclick="return Del('<?= $permissionGroup->name ?>')" class="btn btn-danger btn-sm"> {{ __('button.Delete') }}</button>
                         </form>
                     </td>
                 </tr>

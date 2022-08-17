@@ -15,4 +15,6 @@ interface BaseRepositoryInterface
     public function getAll(array $input=[]);
 
     public function with($relations);
+
+    public function where($colum, $param);
 }

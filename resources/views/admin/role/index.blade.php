@@ -40,7 +40,7 @@
                         <form class="d-inline" method="post" action="{{ route('role.destroy', $role->id) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm"> {{ __('button.Delete')}} </button>
+                            <button type="submit" onclick="return Del('<?= $role->name ?>')" class="btn btn-danger btn-sm"> {{ __('button.Delete')}} </button>
                         </form>
                     </td>
                 </tr>

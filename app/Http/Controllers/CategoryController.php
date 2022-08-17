@@ -31,7 +31,6 @@ class CategoryController extends Controller
     {
         $this->categoryRepository->save($request->validated());
         return redirect()->route('category.index')->with('success', 'Creation success.');
-        ;
     }
 
     public function show($id)

@@ -9,7 +9,14 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'id',
+        'content',
+        'category_id',
+        'question_id',
+        'correct',
+        'answer',
+    ];
 
     public function answers()
     {
