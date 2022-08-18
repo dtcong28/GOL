@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class QuestionRequest extends FormRequest
 {
@@ -25,10 +24,11 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => ['required',Rule::unique('questions')->ignore($this->question)],
+            'content' => ['required'],
             'category_id' => ['required'],
-            'answer' => ['required','array'],
-            'radio-answer' => ['required','in:0,1,2,3'],
+            'answer.content' => ['array'],
+            'answer.is_correct.*' => ['required'],
+            'answer.content.*' => ['required'],
         ];
     }
 }

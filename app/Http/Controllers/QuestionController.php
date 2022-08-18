@@ -38,16 +38,23 @@ class QuestionController extends Controller
         DB::beginTransaction();
 
         try {
+            $answers = $request->all()['answer']["'content'"];
+            $is_correct = reset($request->all()['answer']["'is_correct'"]);
+            // dd($is_correct);
             $question = $this->questionRepository->save($request->only('content', 'category_id'));
-            $data = $request->except(['_token', 'radio-answer', 'category_id', 'content']);
-            $data['question_id'] = $question->id;
-            foreach ($request['answer'] as $key => $answer) {
-                $data['correct'] = false;
-                if ($request['radio-answer'] == $key) {
-                    $data['correct'] = true;
-                }
+            // dd($answers);
+            foreach ($answers as $key => $answer) {
+                // $data['correct'] = false;
+                // if ($is_correct == $key) {
+                //     $data['correct'] = true;
+                //     dd($data);
+                // }
+                // dd($key,$is_correct);
+                // dd(($key == $is_correct));
+                $data['correct'] = ($key == $is_correct);
+                // dd($data);
                 $data['content'] = $answer;
-                $this->answerRepository->save($data);
+                $question->answers()->create($data);
             }
             DB::commit();
             return redirect()->route('question.index')->with('success', 'Creation success.');
@@ -69,7 +76,7 @@ class QuestionController extends Controller
         if (!$question = $filtered) {
             abort(404);
         }
-        return view('admin.question.form', ['question' => current($question->all()),'act'=>'show' ,'categories' => $this->categoryRepository->getAll()]);
+        return view('admin.question.form', ['question' => current($question->all()), 'act' => 'show', 'categories' => $this->categoryRepository->getAll()]);
     }
 
 
@@ -93,19 +100,15 @@ class QuestionController extends Controller
         DB::beginTransaction();
 
         try {
+            $new_answers = $request->all()['answer']["'content'"];
+            $is_correct = reset($request->all()['answer']["'is_correct'"]);
             $question = $this->questionRepository->save($request->only('content', 'category_id'), ['id' => $id]);
-            $data['question_id'] = $question->id;
-
-            $answers = $this->answerRepository->where('question_id', $id);
-            $ids_answer = collect($answers->get())->pluck('id');
-            foreach ($request['answer'] as $key => $answer) {
-                $data['correct'] = false;
-                if ($request['radio-answer'] == $key) {
-                    $data['correct'] = true;
-                }
-                $data['content'] = $answer;
-                $this->answerRepository->save($data, ['id' => $ids_answer[$key]]);
+            $old_answers = $question->answers->all();
+            foreach ($new_answers as $key => $answer) {
+                $old_answers[$key]->correct= ($key == $is_correct);
+                $old_answers[$key]->content = $answer;
             }
+            $question->push();
             DB::commit();
             return redirect()->route('question.index')->with('success', 'Upadate success.');
         } catch (\Exception $e) {
