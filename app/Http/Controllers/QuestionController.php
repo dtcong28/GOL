@@ -40,19 +40,9 @@ class QuestionController extends Controller
         try {
             $answers = $request->all()['answer']["'content'"];
             $is_correct = reset($request->all()['answer']["'is_correct'"]);
-            // dd($is_correct);
             $question = $this->questionRepository->save($request->only('content', 'category_id'));
-            // dd($answers);
             foreach ($answers as $key => $answer) {
-                // $data['correct'] = false;
-                // if ($is_correct == $key) {
-                //     $data['correct'] = true;
-                //     dd($data);
-                // }
-                // dd($key,$is_correct);
-                // dd(($key == $is_correct));
                 $data['correct'] = ($key == $is_correct);
-                // dd($data);
                 $data['content'] = $answer;
                 $question->answers()->create($data);
             }
