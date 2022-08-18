@@ -38,9 +38,4 @@ class BaseRepository implements BaseRepositoryInterface
     {
         return $this->model->with($relations);
     }
-
-    public function where($colum, $param)
-    {
-        return $this->model->where($colum, '=', $param);
-    }
 }

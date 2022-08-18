@@ -79,8 +79,8 @@
                     @for($i=0;$i < 4; $i++) <div class="form-group">
                         <label>{{ __('label.Answer')}} {{$i+1}}</label>
                         <div class="row">
-                            <textarea class="form-control col-10" name="answer[]" rows="2" {{(isset($act)) ? 'readonly' : ''}}>{{(isset($question)) ? $question->answers[$i]->content : ''}}</textarea>
-                            <input style="height: 30px;" type="radio" class="col-2" name="radio-answer" id="radio-{{$i}}" value="{{$i}}" {{( isset($question) AND $question->answers[$i]->correct == 1) ? 'checked' : ''}} />
+                            <textarea class="form-control col-10" name="answer['content'][]" rows="2" {{(isset($act)) ? 'readonly' : ''}}>{{(isset($question)) ? $question->answers[$i]->content : ''}}</textarea>
+                            <input style="height: 30px;" type="radio" class="col-2" name="answer['is_correct'][]" id="radio-{{$i}}" value="{{$i}}" {{( isset($question) AND $question->answers[$i]->correct == 1) ? 'checked' : ''}} />
                         </div>
                         @endfor
                 </div>
