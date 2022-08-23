@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Repository\CategoryRepositoryInterface;
 use App\Http\Requests\Admin\CategoryRequest;
+
 class CategoryController extends Controller
 {
     protected $categoryRepository;
@@ -16,12 +16,12 @@ class CategoryController extends Controller
 
     public function index()
     {
-        return view('admin.category.index',[
+        return view('admin.category.index', [
             'categories' => $this->categoryRepository->paginate()
         ]);
     }
 
-  
+
     public function create()
     {
         return view('admin.category.form');
@@ -30,9 +30,9 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $this->categoryRepository->save($request->validated());
-        return redirect()->route('category.index')->with('success', 'Creation success.');;
+        return redirect()->route('category.index')->with('success', 'Creation success.');
     }
-   
+
     public function show($id)
     {
         if (!$category = $this->categoryRepository->findById($id)) {

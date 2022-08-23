@@ -12,4 +12,5 @@ return [
 
     "System"=> "System",
     "Catalog"=>"Catalog",
+    "Question management" => "Question management",
 ];

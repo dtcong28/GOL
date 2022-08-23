@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryRequest extends FormRequest
+class QuestionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +24,11 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>['required',Rule::unique('categories')->ignore($this->category)],
-            'slug' =>['required',Rule::unique('categories')->ignore($this->category)],
+            'content' => ['required'],
+            'category_id' => ['required'],
+            'answer.content' => ['array'],
+            'answer.is_correct.*' => ['required'],
+            'answer.content.*' => ['required'],
         ];
     }
 }

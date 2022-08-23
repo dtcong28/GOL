@@ -6,6 +6,7 @@ use App\Http\Controllers\PermissionGroupController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -52,4 +53,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['admin.verify','auth']], fu
 
     //Category
     Route::resource('category', CategoryController::class);
+
+    //Question
+    Route::resource('question', QuestionController::class);
 });

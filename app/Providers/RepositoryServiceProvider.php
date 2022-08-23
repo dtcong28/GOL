@@ -14,6 +14,10 @@ use App\Repository\Eloquent\UserRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\CategoryRepositoryInterface;
 use App\Repository\Eloquent\CategoryRepository;
+use App\Repository\QuestionRepositoryInterface;
+use App\Repository\Eloquent\QuestionRepository;
+use App\Repository\AnswerRepositoryInterface;
+use App\Repository\Eloquent\AnswerRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -30,6 +34,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(RoleRepositoryInterface::class, RoleRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(QuestionRepositoryInterface::class, QuestionRepository::class);
+        $this->app->bind(AnswerRepositoryInterface::class, AnswerRepository::class);
     }
 
     /**

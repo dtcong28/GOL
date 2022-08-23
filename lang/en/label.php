@@ -10,4 +10,6 @@ return[
     "Amount"=>"Amount",
     "Description"=>"Description",
     "Role" =>"Role",
+    "Content" => "Content",
+    "Answer" => "Answer",
 ];

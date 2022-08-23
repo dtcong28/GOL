@@ -10,4 +10,6 @@ return[
     "Amount"=>"Khối lượng",
     "Description"=>"Mô tả",
     "Role" =>"Vai trò",
+    "Content" => "Nội dung",
+    "Answer" => "Câu trả lời",
 ];

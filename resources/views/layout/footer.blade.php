@@ -38,3 +38,8 @@
 <script src="/template/admin/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/template/admin/dist/js/pages/dashboard.js"></script>
+<script>
+  function Del(name) {
+    return confirm("Do you want to delete: " + name + " ?");
+  }
+</script>
